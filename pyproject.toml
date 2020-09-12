@@ -23,7 +23,9 @@ deps =
     coverage[toml]
 
 [testenv:lint]
-commands = black . --check && isort . --check-only
+commands =
+    black . --check
+    isort . --check-only
 deps =
     black
     isort[pyproject]

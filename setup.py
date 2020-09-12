@@ -27,8 +27,8 @@ setup(
     ],
     python_requires=">=3.7",
     project_urls={
-        'Documentation': 'https://gitlab.geekeno.com/utils/easy-env',
-        'Source': 'https://gitlab.geekeno.com/utils/easy-env',
-        'Tracker': 'https://gitlab.geekeno.com/utils/easy-env/-/issues',
+        "Documentation": "https://gitlab.geekeno.com/utils/easy-env",
+        "Source": "https://gitlab.geekeno.com/utils/easy-env",
+        "Tracker": "https://gitlab.geekeno.com/utils/easy-env/-/issues",
     },
 )

@@ -23,10 +23,10 @@ def env(
     f"""
     Returns the environment variable for the given `name` after parsing it to
     the `expected_type`.
-    
+
     If a environment variable does not exist the `default` value is returned if
     provided. If no `default` is provided it raises KeyError.
-    
+
     :param name: str
         The name of the environment variable
     :param expected_type: {ParableTypes}
