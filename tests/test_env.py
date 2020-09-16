@@ -45,4 +45,4 @@ class TestCase(unittest.TestCase):
                 var = op(str(boolean))
                 os.environ["foo"] = var
                 with self.subTest(f"test_{var}"):
-                    self.assertEqual(env("foo", bool), boolean)
+                    self.assertEqual(env("foo", expected_type=bool), boolean)
