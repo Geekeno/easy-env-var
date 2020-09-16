@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="easy_env_var",
-    version="1.0.0",
+    version="1.0.1",
     author="Geekeno",
     author_email="dev@geekeno.com",
     description="Simple util to get environment variables in the right data type.",
@@ -25,7 +25,7 @@ setup(
         "Topic :: Utilities",
         "Typing :: Typed",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.6",
     project_urls={
         "Documentation": "https://gitlab.geekeno.com/utils/easy-env",
         "Source": "https://gitlab.geekeno.com/utils/easy-env",

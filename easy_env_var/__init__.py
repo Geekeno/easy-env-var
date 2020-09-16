@@ -12,14 +12,14 @@ PARSE_MAP = {
     Decimal: Decimal,
     bool: lambda value: json.loads(value.lower()),
 }
-ParableTypes = Union[tuple(PARSE_MAP)]
+ParseableTypes = Union[tuple(PARSE_MAP)]
 
 empty = object()
 
 
 def env(
-    name: str, expected_type: ParableTypes = str, default: Optional[Any] = empty
-) -> ParableTypes:
+    name: str, *, expected_type: ParseableTypes = str, default: Optional[Any] = empty
+) -> ParseableTypes:
     f"""
     Returns the environment variable for the given `name` after parsing it to
     the `expected_type`.
@@ -29,12 +29,12 @@ def env(
 
     :param name: str
         The name of the environment variable
-    :param expected_type: {ParableTypes}
+    :param expected_type: {ParseableTypes}
         The data type the environment variable should be parse to.
     :param default: Any
         The default value to use in case the environment variable doesn't exist.
         This value is not parsed.
-    :return: {ParableTypes}
+    :return: {ParseableTypes}
         The parsed environment variable or the default value if not found.
     :raises:
         KeyError:
