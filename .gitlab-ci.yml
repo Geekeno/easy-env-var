@@ -11,6 +11,13 @@ stages:
   script:
     - coverage run
     - coverage report
+    - coverage xml
+  coverage: '/TOTAL.*?(\d+(?:\.\d+)\%)$/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
 
 python37:
   extends: .python_coverage
