@@ -1,30 +1,55 @@
-image: python:3.8
+image: python:3.11-alpine
 
 stages:
 - test
 - release
 
-before_script:
-- pip install tox
-
-python36:
-  image: python:3.6
+.python_coverage:
   stage: test
-  script: tox -e py36
+  before_script:
+    - pip install -r requirements.txt
+  script:
+    - coverage run
+    - coverage report
 
 python37:
-  image: python:3.7
-  stage: test
-  script: tox -e py37
+  extends: .python_coverage
+  image: python:3.7-alpine
+  before_script:
+    - apk add gcc musl-dev
+    - pip install -r requirements.txt
 
 python38:
-  image: python:3.8
-  stage: test
-  script: tox -e py38
+  extends: .python_coverage
+  image: python:3.8-alpine
+
+python39:
+  extends: .python_coverage
+  image: python:3.9-alpine
+
+python310:
+  extends: .python_coverage
+  image: python:3.10-alpine
+
+python311:
+  extends: .python_coverage
+  image: python:3.11-alpine
+
+python312:
+  extends: .python_coverage
+  image: python:3.12-rc-alpine
 
 lint:
   stage: test
-  script: tox -e lint
+  before_script:
+    - pip install -r requirements.txt
+  script: black . --check && isort . --check-only
+
+typing:
+  stage: test
+  before_script:
+    - pip install -r requirements.txt
+  script: mypy .
 
 pypi:
     image: docker.km3net.de/base/python:3
