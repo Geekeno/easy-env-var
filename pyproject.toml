@@ -1,7 +1,7 @@
 [tool.black]
 line-length=88
 fast=true
-target-version=["py36", "py37", "py38"]
+target-version=["py36", "py37", "py38", "py39", "py310", "py311"]
 [tool.isort]
 multi_line_output=3
 include_trailing_comma=true
@@ -10,26 +10,6 @@ use_parentheses=true
 combine_as_imports=true
 line_length=88
 ensure_newline_before_comments=true
-[tool.tox]
-legacy_tox_ini = """
-[tox]
-envlist = py36, py37, py38, lint
-
-[testenv]
-commands =
-    coverage run
-    coverage report
-deps =
-    coverage[toml]
-
-[testenv:lint]
-commands =
-    black . --check
-    isort . --check-only
-deps =
-    black
-    isort[pyproject]
-"""
 [tool.coverage.run]
 branch=true
 source=["easy_env_var"]
@@ -38,3 +18,4 @@ command_line="-m unittest"
 precision=3
 fail_under=90.00
 show_missing=true
+exclude_lines=["@overload"]

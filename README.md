@@ -44,8 +44,8 @@ TIMEOUT=1000
 from easy_env_var import env
 
 CACHES = env("CACHE", expected_type=dict)
-DEBUG = env("DEBUG", bool, default=False)
-TIMEOUT = env("TIMEOUT", int, 300)
+DEBUG = env("DEBUG", expected_type=bool, default=False)
+TIMEOUT = env("TIMEOUT", expected_type=int, default=300)
 ```
 
 ### Installation
@@ -53,6 +53,8 @@ Simply install using pip by running
 ```
 pip install easy_env_var
 ```
+For Python 3.7 you will also need [typed-ast](https://pypi.org/project/typed-ast/) which
+should automatically be installed. For Python 3.8 and above it is not needed.
 
 ### Usage
 ```pythonstub
@@ -72,10 +74,10 @@ Environment variables can be parsed to the following data types:
 * str (this is the default type)
 * int
 * float
-* bool (works with case insensitive values of True & False)
+* bool (works with case-insensitive values of True & False)
 * Decimal
 * list
-* dict (the keys need to always be strings) 
+* dict (the keys need to always be strings)                               
 Sets and tuples are not supported since using lists is good enough for most use cases.
 
 ### Why easy_env_var?
